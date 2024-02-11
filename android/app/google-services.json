@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "875508631575",
+    "project_id": "muki-muki-649c6",
+    "storage_bucket": "muki-muki-649c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875508631575:android:531bdb9e1b96709ff7b452",
+        "android_client_info": {
+          "package_name": "com.mycompany.shopapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875508631575-88a0nldtk552poc5g3fn6i0aukpcnhgm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyxaQrp07hdewva5oOMQjhceUZETOXokQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875508631575-88a0nldtk552poc5g3fn6i0aukpcnhgm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "875508631575-34mv7jen860gftli0ipv6ott64h8vr1l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.shopapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

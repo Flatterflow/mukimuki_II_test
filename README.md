@@ -1,4 +1,7 @@
-# mukimuki_II_test
-accidentally delete previous repository by pressing commit. Dont know what happened but everything disappeared
+# MUKIMUKI
 
-indian youtuber told me to write a sentece
+A new Flutter project.
+
+## Getting Started
+
+FlutterFlow projects are built to run on the Flutter _stable_ release.
