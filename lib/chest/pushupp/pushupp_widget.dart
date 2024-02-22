@@ -88,33 +88,6 @@ class _PushuppWidgetState extends State<PushuppWidget> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
-                  },
-                  text: 'Add Workout',
-                  options: FFButtonOptions(
-                    height: 40.0,
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Open Sans',
-                          color: Colors.white,
-                        ),
-                    elevation: 3.0,
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-              ),
-              Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {

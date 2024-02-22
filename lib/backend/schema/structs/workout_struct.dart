@@ -11,14 +11,20 @@ class WorkoutStruct extends FFFirebaseStruct {
   WorkoutStruct({
     String? name,
     List<ExerciseStruct>? exerices,
+    DateTime? lastUsedDate,
+    List<WorkoutStruct>? workoutTemplates,
+    bool? isNew,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _exerices = exerices,
+        _lastUsedDate = lastUsedDate,
+        _workoutTemplates = workoutTemplates,
+        _isNew = isNew,
         super(firestoreUtilData);
 
   // "name" field.
   String? _name;
-  String get name => _name ?? 'empty';
+  String get name => _name ?? '';
   set name(String? val) => _name = val;
   bool hasName() => _name != null;
 
@@ -30,12 +36,38 @@ class WorkoutStruct extends FFFirebaseStruct {
       updateFn(_exerices ??= []);
   bool hasExerices() => _exerices != null;
 
+  // "LastUsedDate" field.
+  DateTime? _lastUsedDate;
+  DateTime? get lastUsedDate => _lastUsedDate;
+  set lastUsedDate(DateTime? val) => _lastUsedDate = val;
+  bool hasLastUsedDate() => _lastUsedDate != null;
+
+  // "workoutTemplates" field.
+  List<WorkoutStruct>? _workoutTemplates;
+  List<WorkoutStruct> get workoutTemplates => _workoutTemplates ?? const [];
+  set workoutTemplates(List<WorkoutStruct>? val) => _workoutTemplates = val;
+  void updateWorkoutTemplates(Function(List<WorkoutStruct>) updateFn) =>
+      updateFn(_workoutTemplates ??= []);
+  bool hasWorkoutTemplates() => _workoutTemplates != null;
+
+  // "isNew" field.
+  bool? _isNew;
+  bool get isNew => _isNew ?? false;
+  set isNew(bool? val) => _isNew = val;
+  bool hasIsNew() => _isNew != null;
+
   static WorkoutStruct fromMap(Map<String, dynamic> data) => WorkoutStruct(
         name: data['name'] as String?,
         exerices: getStructList(
           data['exerices'],
           ExerciseStruct.fromMap,
         ),
+        lastUsedDate: data['LastUsedDate'] as DateTime?,
+        workoutTemplates: getStructList(
+          data['workoutTemplates'],
+          WorkoutStruct.fromMap,
+        ),
+        isNew: data['isNew'] as bool?,
       );
 
   static WorkoutStruct? maybeFromMap(dynamic data) =>
@@ -44,6 +76,9 @@ class WorkoutStruct extends FFFirebaseStruct {
   Map<String, dynamic> toMap() => {
         'name': _name,
         'exerices': _exerices?.map((e) => e.toMap()).toList(),
+        'LastUsedDate': _lastUsedDate,
+        'workoutTemplates': _workoutTemplates?.map((e) => e.toMap()).toList(),
+        'isNew': _isNew,
       }.withoutNulls;
 
   @override
@@ -56,6 +91,19 @@ class WorkoutStruct extends FFFirebaseStruct {
           _exerices,
           ParamType.DataStruct,
           true,
+        ),
+        'LastUsedDate': serializeParam(
+          _lastUsedDate,
+          ParamType.DateTime,
+        ),
+        'workoutTemplates': serializeParam(
+          _workoutTemplates,
+          ParamType.DataStruct,
+          true,
+        ),
+        'isNew': serializeParam(
+          _isNew,
+          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -72,6 +120,22 @@ class WorkoutStruct extends FFFirebaseStruct {
           true,
           structBuilder: ExerciseStruct.fromSerializableMap,
         ),
+        lastUsedDate: deserializeParam(
+          data['LastUsedDate'],
+          ParamType.DateTime,
+          false,
+        ),
+        workoutTemplates: deserializeStructParam<WorkoutStruct>(
+          data['workoutTemplates'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: WorkoutStruct.fromSerializableMap,
+        ),
+        isNew: deserializeParam(
+          data['isNew'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -82,15 +146,21 @@ class WorkoutStruct extends FFFirebaseStruct {
     const listEquality = ListEquality();
     return other is WorkoutStruct &&
         name == other.name &&
-        listEquality.equals(exerices, other.exerices);
+        listEquality.equals(exerices, other.exerices) &&
+        lastUsedDate == other.lastUsedDate &&
+        listEquality.equals(workoutTemplates, other.workoutTemplates) &&
+        isNew == other.isNew;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([name, exerices]);
+  int get hashCode => const ListEquality()
+      .hash([name, exerices, lastUsedDate, workoutTemplates, isNew]);
 }
 
 WorkoutStruct createWorkoutStruct({
   String? name,
+  DateTime? lastUsedDate,
+  bool? isNew,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -98,6 +168,8 @@ WorkoutStruct createWorkoutStruct({
 }) =>
     WorkoutStruct(
       name: name,
+      lastUsedDate: lastUsedDate,
+      isNew: isNew,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

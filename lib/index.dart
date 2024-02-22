@@ -25,7 +25,8 @@ export '/pages/loginthingsorprofile/profilev2/profilev2_widget.dart'
 export '/pages/loginthingsorprofile/settings1_notifications/settings1_notifications_widget.dart'
     show Settings1NotificationsWidget;
 export '/pages/biggerworouts/legs/legs_widget.dart' show LegsWidget;
-export '/pages/armworkouts/armworkouts_widget.dart' show ArmworkoutsWidget;
+export '/pages/biggerworouts/armworkouts/armworkouts_widget.dart'
+    show ArmworkoutsWidget;
 export '/pages/biggerworouts/chestandbackworkouts/chestandbackworkouts_widget.dart'
     show ChestandbackworkoutsWidget;
 export '/pages/workoutvideo/schedulevideo/schedulevideo_widget.dart'
@@ -59,3 +60,10 @@ export '/pages/biggerworouts/otherchest_copy_copy_copy/otherchest_copy_copy_copy
     show OtherchestCopyCopyCopyWidget;
 export '/pages/chest/advancedat_home/advancedat_home_widget.dart'
     show AdvancedatHomeWidget;
+export '/pages/biggerworouts/legsv2/legsv2_widget.dart' show Legsv2Widget;
+export '/pages/biggerworouts/mukimukiv2/mukimukiv2_widget.dart'
+    show Mukimukiv2Widget;
+export '/chest_interr_gym_copy/chest_interr_gym_copy_widget.dart'
+    show ChestInterrGymCopyWidget;
+export '/pages/workoutvideo/pushup_copy/pushup_copy_widget.dart'
+    show PushupCopyWidget;

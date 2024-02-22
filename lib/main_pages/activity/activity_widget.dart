@@ -648,12 +648,24 @@ class _ActivityWidgetState extends State<ActivityWidget> {
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(16.0),
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  context.pushNamed(
+                                    'HomePage',
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: const TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
+                                      ),
+                                    },
+                                  );
+
+                                  await Future.delayed(
+                                      const Duration(milliseconds: 200));
                                 },
-                                text: 'Start a wormkout',
+                                text: 'Start a workout',
                                 options: FFButtonOptions(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),

@@ -294,7 +294,7 @@ class ThemeTypography extends Typography {
   String get bodySmallFamily => 'Open Sans';
   TextStyle get bodySmall => GoogleFonts.getFont(
         'Open Sans',
-        color: theme.secondaryText,
+        color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 14.0,
       );

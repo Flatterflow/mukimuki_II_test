@@ -420,7 +420,7 @@ class _EditprofWidgetState extends State<EditprofWidget> {
                                 }
                               },
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(60.0),
+                                borderRadius: BorderRadius.circular(24.0),
                                 child: Image.network(
                                   currentUserPhoto,
                                   width: 100.0,

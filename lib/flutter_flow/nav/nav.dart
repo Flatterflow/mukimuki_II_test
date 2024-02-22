@@ -108,12 +108,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 'userfavouriteworkouts':
                     getDoc(['users', 'workouts'], WorkoutsRecord.fromSnapshot),
               },
-              builder: (context, params) => params.isEmpty
-                  ? const NavBarPage(initialPage: 'FAVORITE')
-                  : FavoriteWidget(
-                      userfavouriteworkouts: params.getParam(
-                          'userfavouriteworkouts', ParamType.Document),
-                    ),
+              builder: (context, params) => FavoriteWidget(
+                userfavouriteworkouts: params.getParam(
+                    'userfavouriteworkouts', ParamType.Document),
+              ),
             ),
             FFRoute(
               name: 'Pushup',
@@ -310,6 +308,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'AdvancedatHome',
               path: 'advancedatHome',
               builder: (context, params) => const AdvancedatHomeWidget(),
+            ),
+            FFRoute(
+              name: 'Legsv2',
+              path: 'legsv2',
+              builder: (context, params) => const Legsv2Widget(),
+            ),
+            FFRoute(
+              name: 'MUKIMUKIV2',
+              path: 'mukimukiv2',
+              builder: (context, params) => const Mukimukiv2Widget(),
+            ),
+            FFRoute(
+              name: 'ChestInterrGymCopy',
+              path: 'Mukiarm',
+              builder: (context, params) => const ChestInterrGymCopyWidget(),
+            ),
+            FFRoute(
+              name: 'PushupCopy',
+              path: 'MukiPushup',
+              builder: (context, params) => const PushupCopyWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

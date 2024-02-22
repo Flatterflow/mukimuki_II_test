@@ -1,5 +1,6 @@
-import '/backend/backend.dart';
-import '/components/workout_start/workout_start_widget.dart';
+import '/backend/schema/structs/index.dart';
+import '/components/add_workout_box_button/add_workout_box_button_widget.dart';
+import '/components/workout_box/workout_box_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,9 +9,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -84,11 +83,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: FlutterFlowTheme.of(context).primary,
       body: SafeArea(
         top: true,
         child: SingleChildScrollView(
-          primary: false,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -120,6 +118,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Open Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 32.0,
                                       ),
                                 ).animateOnPageLoad(
@@ -314,7 +314,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed('Legs');
+                                    context.pushNamed('Legsv2');
                                   },
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
@@ -350,7 +350,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      context.pushNamed('Chestandbackworkouts');
+                                      context.goNamed('Chestandbackworkouts');
                                     },
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -421,7 +421,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      context.pushNamed('MUKIMUKIWokouts');
+                                      context.pushNamed('MUKIMUKIV2');
                                     },
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -493,192 +493,114 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         ),
                                   ),
                                 ),
-                                Icon(
-                                  Icons.add,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 36.0,
+                                wrapWithModel(
+                                  model: _model.addWorkoutBoxButtonModel,
+                                  updateCallback: () => setState(() {}),
+                                  child: AddWorkoutBoxButtonWidget(
+                                    addWorkoutBoxAction: () async {
+                                      setState(() {
+                                        FFAppState().addToWrkts(WorkoutStruct(
+                                          isNew: true,
+                                          lastUsedDate: getCurrentTimestamp,
+                                        ));
+                                      });
+                                    },
+                                  ),
                                 ),
                               ],
                             ),
                             Align(
                               alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: StreamBuilder<
-                                  List<HomepageGridTemplatesRecord>>(
-                                stream: queryHomepageGridTemplatesRecord(),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 35.0,
-                                        height: 35.0,
-                                        child: SpinKitSquareCircle(
-                                          color: FlutterFlowTheme.of(context)
-                                              .lineColor,
-                                          size: 35.0,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<HomepageGridTemplatesRecord>
-                                      gridViewHomepageGridTemplatesRecordList =
-                                      snapshot.data!;
-                                  return GridView.builder(
-                                    padding: EdgeInsets.zero,
-                                    gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 12.0,
-                                      mainAxisSpacing: 12.0,
-                                      childAspectRatio: 1.0,
-                                    ),
-                                    primary: false,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount:
-                                        gridViewHomepageGridTemplatesRecordList
-                                            .length,
-                                    itemBuilder: (context, gridViewIndex) {
-                                      final gridViewHomepageGridTemplatesRecord =
-                                          gridViewHomepageGridTemplatesRecordList[
-                                              gridViewIndex];
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return WebViewAware(
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: const WorkoutStartWidget(),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-                                        },
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            borderRadius:
-                                                BorderRadius.circular(6.0),
-                                            border: Border.all(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              width: 3.0,
-                                            ),
+                              child: Builder(
+                                builder: (context) {
+                                  if (FFAppState().wrkts.isNotEmpty) {
+                                    return Builder(
+                                      builder: (context) {
+                                        final workouts =
+                                            FFAppState().wrkts.toList();
+                                        return GridView.builder(
+                                          padding: EdgeInsets.zero,
+                                          gridDelegate:
+                                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2,
+                                            crossAxisSpacing: 12.0,
+                                            mainAxisSpacing: 12.0,
+                                            childAspectRatio: 1.0,
                                           ),
-                                          child: Column(
+                                          primary: false,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: workouts.length,
+                                          itemBuilder:
+                                              (context, workoutsIndex) {
+                                            final workoutsItem =
+                                                workouts[workoutsIndex];
+                                            return WorkoutBoxWidget(
+                                              key: Key(
+                                                  'Key0s2_${workoutsIndex}_of_${workouts.length}'),
+                                              workoutName: workoutsItem.name,
+                                              exerciseNames: workoutsItem
+                                                  .exerices
+                                                  .take(5)
+                                                  .toList()
+                                                  .map((e) => e.exerciseRef)
+                                                  .withoutNulls
+                                                  .toList(),
+                                              index: workoutsIndex,
+                                              lastWorkout: workoutsItem,
+                                              onDeleteAction: () async {
+                                                setState(() {});
+                                              },
+                                              onUpdateAction: () async {
+                                                setState(() {});
+                                              },
+                                            );
+                                          },
+                                        );
+                                      },
+                                    );
+                                  } else {
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 10.0),
+                                          child: Row(
                                             mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    valueOrDefault<String>(
-                                                      gridViewHomepageGridTemplatesRecord
-                                                          .name,
-                                                      'title',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Open Sans',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Builder(
-                                                builder: (context) {
-                                                  final exerciseNames =
-                                                      gridViewHomepageGridTemplatesRecord
-                                                          .exerciseRef
-                                                          .toList();
-                                                  return ListView.builder(
-                                                    padding: EdgeInsets.zero,
-                                                    shrinkWrap: true,
-                                                    scrollDirection:
-                                                        Axis.vertical,
-                                                    itemCount:
-                                                        exerciseNames.length,
-                                                    itemBuilder: (context,
-                                                        exerciseNamesIndex) {
-                                                      final exerciseNamesItem =
-                                                          exerciseNames[
-                                                              exerciseNamesIndex];
-                                                      return StreamBuilder<
-                                                          ExercisesRecord>(
-                                                        stream: ExercisesRecord
-                                                            .getDocument(
-                                                                exerciseNamesItem),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 35.0,
-                                                                height: 35.0,
-                                                                child:
-                                                                    SpinKitSquareCircle(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .lineColor,
-                                                                  size: 35.0,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          }
-                                                          final textExercisesRecord =
-                                                              snapshot.data!;
-                                                          return Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              textExercisesRecord
-                                                                  .name,
-                                                              'exercise',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Open Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                                ),
-                                                          );
-                                                        },
-                                                      );
-                                                    },
-                                                  );
-                                                },
+                                              Text(
+                                                'No workouts',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
                                               ),
                                             ],
                                           ),
                                         ),
-                                      );
-                                    },
-                                  );
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Hit + to create new workout template',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  }
                                 },
                               ),
                             ),

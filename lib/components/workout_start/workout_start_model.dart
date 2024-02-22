@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 class WorkoutStartModel extends FlutterFlowModel<WorkoutStartWidget> {
   ///  State fields for stateful widgets in this component.
 
+  DateTime? datePicked;
   // State field(s) for Timer widget.
   int timerMilliseconds = 0;
   String timerValue = StopWatchTimer.getDisplayTime(

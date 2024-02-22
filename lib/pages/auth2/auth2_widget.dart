@@ -104,20 +104,22 @@ class _Auth2WidgetState extends State<Auth2Widget>
       length: 2,
       initialIndex: 0,
     )..addListener(() => setState(() {}));
-    _model.emailAddressController1 ??= TextEditingController();
-    _model.emailAddressFocusNode1 ??= FocusNode();
+    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordController1 ??= TextEditingController();
-    _model.passwordFocusNode1 ??= FocusNode();
+    _model.passwordController ??= TextEditingController();
+    _model.passwordFocusNode ??= FocusNode();
 
     _model.confirmpasswordController ??= TextEditingController();
     _model.confirmpasswordFocusNode ??= FocusNode();
 
-    _model.emailAddressController2 ??= TextEditingController();
-    _model.emailAddressFocusNode2 ??= FocusNode();
+    _model.emailAddresslogController ??=
+        TextEditingController(text: currentUserEmail);
+    _model.emailAddresslogFocusNode ??= FocusNode();
 
-    _model.passwordController2 ??= TextEditingController();
-    _model.passwordFocusNode2 ??= FocusNode();
+    _model.passwordlogController ??=
+        TextEditingController(text: _model.passwordController.text);
+    _model.passwordlogFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -309,9 +311,9 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .emailAddressController1,
+                                                            .emailAddressController,
                                                         focusNode: _model
-                                                            .emailAddressFocusNode1,
+                                                            .emailAddressFocusNode,
                                                         autofocus: true,
                                                         autofillHints: const [
                                                           AutofillHints.email
@@ -403,7 +405,7 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                             TextInputType
                                                                 .emailAddress,
                                                         validator: _model
-                                                            .emailAddressController1Validator
+                                                            .emailAddressControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -418,15 +420,15 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .passwordController1,
+                                                            .passwordController,
                                                         focusNode: _model
-                                                            .passwordFocusNode1,
+                                                            .passwordFocusNode,
                                                         autofocus: true,
                                                         autofillHints: const [
                                                           AutofillHints.password
                                                         ],
                                                         obscureText: !_model
-                                                            .passwordVisibility1,
+                                                            .passwordVisibility,
                                                         decoration:
                                                             InputDecoration(
                                                           labelText: 'Password',
@@ -508,15 +510,15 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                             onTap: () =>
                                                                 setState(
                                                               () => _model
-                                                                      .passwordVisibility1 =
+                                                                      .passwordVisibility =
                                                                   !_model
-                                                                      .passwordVisibility1,
+                                                                      .passwordVisibility,
                                                             ),
                                                             focusNode: FocusNode(
                                                                 skipTraversal:
                                                                     true),
                                                             child: Icon(
-                                                              _model.passwordVisibility1
+                                                              _model.passwordVisibility
                                                                   ? Icons
                                                                       .visibility_outlined
                                                                   : Icons
@@ -533,7 +535,7 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                                     context)
                                                                 .titleMedium,
                                                         validator: _model
-                                                            .passwordController1Validator
+                                                            .passwordControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -687,7 +689,7 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                           GoRouter.of(context)
                                                               .prepareAuthEvent();
                                                           if (_model
-                                                                  .passwordController1
+                                                                  .passwordController
                                                                   .text !=
                                                               _model
                                                                   .confirmpasswordController
@@ -709,10 +711,10 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                                   .createAccountWithEmail(
                                                             context,
                                                             _model
-                                                                .emailAddressController1
+                                                                .emailAddressController
                                                                 .text,
                                                             _model
-                                                                .passwordController1
+                                                                .passwordController
                                                                 .text,
                                                           );
                                                           if (user == null) {
@@ -983,9 +985,9 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .emailAddressController2,
+                                                            .emailAddresslogController,
                                                         focusNode: _model
-                                                            .emailAddressFocusNode2,
+                                                            .emailAddresslogFocusNode,
                                                         autofocus: true,
                                                         autofillHints: const [
                                                           AutofillHints.email
@@ -1074,7 +1076,7 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                             TextInputType
                                                                 .emailAddress,
                                                         validator: _model
-                                                            .emailAddressController2Validator
+                                                            .emailAddresslogControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -1089,15 +1091,15 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .passwordController2,
+                                                            .passwordlogController,
                                                         focusNode: _model
-                                                            .passwordFocusNode2,
+                                                            .passwordlogFocusNode,
                                                         autofocus: true,
                                                         autofillHints: const [
                                                           AutofillHints.password
                                                         ],
                                                         obscureText: !_model
-                                                            .passwordVisibility2,
+                                                            .passwordlogVisibility,
                                                         decoration:
                                                             InputDecoration(
                                                           labelText: 'Password',
@@ -1176,15 +1178,15 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                             onTap: () =>
                                                                 setState(
                                                               () => _model
-                                                                      .passwordVisibility2 =
+                                                                      .passwordlogVisibility =
                                                                   !_model
-                                                                      .passwordVisibility2,
+                                                                      .passwordlogVisibility,
                                                             ),
                                                             focusNode: FocusNode(
                                                                 skipTraversal:
                                                                     true),
                                                             child: Icon(
-                                                              _model.passwordVisibility2
+                                                              _model.passwordlogVisibility
                                                                   ? Icons
                                                                       .visibility_outlined
                                                                   : Icons
@@ -1201,7 +1203,7 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                                     context)
                                                                 .bodyLarge,
                                                         validator: _model
-                                                            .passwordController2Validator
+                                                            .passwordlogControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -1229,10 +1231,10 @@ class _Auth2WidgetState extends State<Auth2Widget>
                                                                   .signInWithEmail(
                                                             context,
                                                             _model
-                                                                .emailAddressController1
+                                                                .emailAddresslogController
                                                                 .text,
                                                             _model
-                                                                .passwordController1
+                                                                .passwordlogController
                                                                 .text,
                                                           );
                                                           if (user == null) {

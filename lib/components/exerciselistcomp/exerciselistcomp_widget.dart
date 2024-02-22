@@ -106,10 +106,8 @@ class _ExerciselistcompWidgetState extends State<ExerciselistcompWidget> {
                         value: _model.checkboxListTileValueMap[
                                 listViewExercisesRecord] ??=
                             FFAppState()
-                                .workout
-                                .exerices
-                                .map((e) => e.exerciseRef?.id)
-                                .withoutNulls
+                                .wrkts
+                                .map((e) => e.name)
                                 .toList()
                                 .contains(listViewExercisesRecord.reference.id),
                         onChanged: (newValue) async {
@@ -119,16 +117,8 @@ class _ExerciselistcompWidgetState extends State<ExerciselistcompWidget> {
                             setState(() {
                               _model.total = _model.total + 1;
                             });
-                            setState(() {
-                              FFAppState().updateWorkoutStruct(
-                                (e) => e
-                                  ..updateExerices(
-                                    (e) => e.add(ExerciseStruct(
-                                      exerciseRef:
-                                          listViewExercisesRecord.reference,
-                                    )),
-                                  ),
-                              );
+                            _model.updatePage(() {
+                              FFAppState().addToWrkts(WorkoutStruct());
                             });
                           } else {
                             setState(() {

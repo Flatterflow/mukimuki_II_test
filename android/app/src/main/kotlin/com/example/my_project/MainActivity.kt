@@ -1,4 +1,4 @@
-package com.mycompany.shopapp
+package mukimuki.flutterflow.com
 
 import io.flutter.embedding.android.FlutterActivity
 

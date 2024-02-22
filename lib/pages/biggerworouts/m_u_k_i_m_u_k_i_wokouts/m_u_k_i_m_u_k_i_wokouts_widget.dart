@@ -77,43 +77,36 @@ class _MUKIMUKIWokoutsWidgetState extends State<MUKIMUKIWokoutsWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 0.0),
-                  child: Text(
-                    'MUKIMUKI (HOUSE WOKOUTS)',
+          child: Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'MUKIMUKI \n(HOUSE WOKOUTS)',
                     style: FlutterFlowTheme.of(context).displaySmall,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.network(
-                      'https://picsum.photos/seed/580/600',
-                      width: double.infinity,
-                      height: 230.0,
-                      fit: BoxFit.cover,
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.network(
+                        'https://picsum.photos/seed/580/600',
+                        width: double.infinity,
+                        height: 230.0,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                Flexible(
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                  Flexible(
                     child: Text(
                       'This workout is for users that bought our product',
                       style: FlutterFlowTheme.of(context).labelLarge,
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
-                  child: Container(
+                  Container(
                     width: double.infinity,
                     height: 50.0,
                     decoration: BoxDecoration(
@@ -152,11 +145,7 @@ class _MUKIMUKIWokoutsWidgetState extends State<MUKIMUKIWokoutsWidget> {
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
-                  child: Container(
+                  Container(
                     width: double.infinity,
                     height: 50.0,
                     decoration: BoxDecoration(
@@ -189,11 +178,7 @@ class _MUKIMUKIWokoutsWidgetState extends State<MUKIMUKIWokoutsWidget> {
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
-                  child: Container(
+                  Container(
                     width: double.infinity,
                     height: 50.0,
                     decoration: BoxDecoration(
@@ -226,11 +211,7 @@ class _MUKIMUKIWokoutsWidgetState extends State<MUKIMUKIWokoutsWidget> {
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
-                  child: Container(
+                  Container(
                     width: double.infinity,
                     height: 50.0,
                     decoration: BoxDecoration(
@@ -263,10 +244,7 @@ class _MUKIMUKIWokoutsWidgetState extends State<MUKIMUKIWokoutsWidget> {
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
-                  child: Container(
+                  Container(
                     width: double.infinity,
                     height: 50.0,
                     decoration: BoxDecoration(
@@ -299,10 +277,7 @@ class _MUKIMUKIWokoutsWidgetState extends State<MUKIMUKIWokoutsWidget> {
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 8.0),
-                  child: Container(
+                  Container(
                     width: double.infinity,
                     height: 50.0,
                     decoration: BoxDecoration(
@@ -335,8 +310,8 @@ class _MUKIMUKIWokoutsWidgetState extends State<MUKIMUKIWokoutsWidget> {
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

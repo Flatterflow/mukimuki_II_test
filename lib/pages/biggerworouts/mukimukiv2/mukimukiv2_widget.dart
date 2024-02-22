@@ -4,25 +4,25 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'legs_model.dart';
-export 'legs_model.dart';
+import 'mukimukiv2_model.dart';
+export 'mukimukiv2_model.dart';
 
-class LegsWidget extends StatefulWidget {
-  const LegsWidget({super.key});
+class Mukimukiv2Widget extends StatefulWidget {
+  const Mukimukiv2Widget({super.key});
 
   @override
-  State<LegsWidget> createState() => _LegsWidgetState();
+  State<Mukimukiv2Widget> createState() => _Mukimukiv2WidgetState();
 }
 
-class _LegsWidgetState extends State<LegsWidget> {
-  late LegsModel _model;
+class _Mukimukiv2WidgetState extends State<Mukimukiv2Widget> {
+  late Mukimukiv2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LegsModel());
+    _model = createModel(context, () => Mukimukiv2Model());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -53,9 +53,9 @@ class _LegsWidgetState extends State<LegsWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primary,
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(47.0),
+          preferredSize: const Size.fromHeight(50.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
@@ -74,7 +74,7 @@ class _LegsWidgetState extends State<LegsWidget> {
               },
             ),
             actions: const [],
-            centerTitle: true,
+            centerTitle: false,
             toolbarHeight: 60.0,
             elevation: 0.0,
           ),
@@ -83,33 +83,82 @@ class _LegsWidgetState extends State<LegsWidget> {
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Column(
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Leg Workouts',
-                      style: FlutterFlowTheme.of(context).displaySmall,
-                    ),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
                           'assets/images/major-lower-body-muscle-groups.jpg',
-                          width: 400.0,
+                          width: 350.0,
                           height: 200.0,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
-                    Flexible(
-                      child: Text(
-                        'Workouts for leg muscles',
-                        style: FlutterFlowTheme.of(context).labelLarge,
+                    Text(
+                      'MUKI MUKI \n(HOUSE WORKOUTS)',
+                      style: FlutterFlowTheme.of(context).displaySmall,
+                    ),
+                    Text(
+                      'Legs muscles workouts',
+                      style: FlutterFlowTheme.of(context).labelLarge,
+                    ),
+                    Text(
+                      'Front',
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            fontFamily: 'Open Sans',
+                            fontSize: 20.0,
+                          ),
+                    ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed('MUKIMUKIWokouts');
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          boxShadow: const [
+                            BoxShadow(
+                              blurRadius: 3.0,
+                              color: Color(0x33000000),
+                              offset: Offset(0.0, 1.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Arms',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                              Icon(
+                                Icons.chevron_right_rounded,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 24.0,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                     Container(
@@ -133,7 +182,7 @@ class _LegsWidgetState extends State<LegsWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Quads',
+                              'Chest/Back',
                               style: FlutterFlowTheme.of(context).labelMedium,
                             ),
                             Icon(
@@ -166,7 +215,7 @@ class _LegsWidgetState extends State<LegsWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Hamstrings',
+                              'Legs',
                               style: FlutterFlowTheme.of(context).labelMedium,
                             ),
                             Icon(
@@ -199,7 +248,7 @@ class _LegsWidgetState extends State<LegsWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Glutes',
+                              'FOR THE WORTHY',
                               style: FlutterFlowTheme.of(context).labelMedium,
                             ),
                             Icon(
@@ -211,73 +260,7 @@ class _LegsWidgetState extends State<LegsWidget> {
                         ),
                       ),
                     ),
-                    Container(
-                      width: double.infinity,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        boxShadow: const [
-                          BoxShadow(
-                            blurRadius: 3.0,
-                            color: Color(0x33000000),
-                            offset: Offset(0.0, 1.0),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Calves',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Icon(
-                              Icons.chevron_right_rounded,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 24.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        boxShadow: const [
-                          BoxShadow(
-                            blurRadius: 3.0,
-                            color: Color(0x33000000),
-                            offset: Offset(0.0, 1.0),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'All Muscles',
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
-                            Icon(
-                              Icons.chevron_right_rounded,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 24.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ].divide(const SizedBox(height: 9.0)),
+                  ].divide(const SizedBox(height: 5.0)),
                 ),
               ),
             ],
