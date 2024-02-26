@@ -328,6 +328,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'PushupCopy',
               path: 'MukiPushup',
               builder: (context, params) => const PushupCopyWidget(),
+            ),
+            FFRoute(
+              name: 'CreateNewWorkout',
+              path: 'createNewWorkout',
+              builder: (context, params) => const CreateNewWorkoutWidget(),
+            ),
+            FFRoute(
+              name: 'CaloriePage',
+              path: 'caloriePage',
+              builder: (context, params) => params.isEmpty
+                  ? const NavBarPage(initialPage: 'CaloriePage')
+                  : const CaloriePageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -502,6 +514,7 @@ class FFRoute {
           return null;
         },
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(

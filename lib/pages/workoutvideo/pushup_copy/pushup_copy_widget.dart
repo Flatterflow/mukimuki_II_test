@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/flutter_flow_youtube_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'pushup_copy_model.dart';
 export 'pushup_copy_model.dart';
@@ -37,15 +36,6 @@ class _PushupCopyWidgetState extends State<PushupCopyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return YoutubeFullScreenWrapper(
@@ -77,7 +67,7 @@ class _PushupCopyWidgetState extends State<PushupCopyWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 const FlutterFlowYoutubePlayer(
-                  url: 'https://www.youtube.com/watch?v=qkN3DG_bOj8',
+                  url: 'https://youtu.be/6lYRhmw5R5Y?si=Waq8OVzpP4x_c4Pi',
                   autoPlay: false,
                   looping: true,
                   mute: false,

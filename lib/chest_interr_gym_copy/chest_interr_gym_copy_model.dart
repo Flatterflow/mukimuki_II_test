@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 
 class ChestInterrGymCopyModel
     extends FlutterFlowModel<ChestInterrGymCopyWidget> {
+  ///  Local state fields for this page.
+
+  bool isPause = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

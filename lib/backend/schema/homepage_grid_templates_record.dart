@@ -24,9 +24,15 @@ class HomepageGridTemplatesRecord extends FirestoreRecord {
   List<DocumentReference> get exerciseRef => _exerciseRef ?? const [];
   bool hasExerciseRef() => _exerciseRef != null;
 
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _exerciseRef = getDataList(snapshotData['exerciseRef']);
+    _createdTime = snapshotData['created_time'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -67,10 +73,12 @@ class HomepageGridTemplatesRecord extends FirestoreRecord {
 
 Map<String, dynamic> createHomepageGridTemplatesRecordData({
   String? name,
+  DateTime? createdTime,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'name': name,
+      'created_time': createdTime,
     }.withoutNulls,
   );
 
@@ -86,12 +94,13 @@ class HomepageGridTemplatesRecordDocumentEquality
       HomepageGridTemplatesRecord? e1, HomepageGridTemplatesRecord? e2) {
     const listEquality = ListEquality();
     return e1?.name == e2?.name &&
-        listEquality.equals(e1?.exerciseRef, e2?.exerciseRef);
+        listEquality.equals(e1?.exerciseRef, e2?.exerciseRef) &&
+        e1?.createdTime == e2?.createdTime;
   }
 
   @override
   int hash(HomepageGridTemplatesRecord? e) =>
-      const ListEquality().hash([e?.name, e?.exerciseRef]);
+      const ListEquality().hash([e?.name, e?.exerciseRef, e?.createdTime]);
 
   @override
   bool isValidKey(Object? o) => o is HomepageGridTemplatesRecord;

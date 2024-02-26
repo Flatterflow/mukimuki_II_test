@@ -35,6 +35,18 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _wrkts;
     });
+    await _safeInitAsync(() async {
+      if (await secureStorage.read(key: 'ff_Calories') != null) {
+        try {
+          final serializedData =
+              await secureStorage.getString('ff_Calories') ?? '{}';
+          _Calories = CalorieCounterStruct.fromSerializableMap(
+              jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -87,6 +99,22 @@ class FFAppState extends ChangeNotifier {
     _wrkts.insert(index, value);
     secureStorage.setStringList(
         'ff_wrkts', _wrkts.map((x) => x.serialize()).toList());
+  }
+
+  CalorieCounterStruct _Calories = CalorieCounterStruct();
+  CalorieCounterStruct get Calories => _Calories;
+  set Calories(CalorieCounterStruct value) {
+    _Calories = value;
+    secureStorage.setString('ff_Calories', value.serialize());
+  }
+
+  void deleteCalories() {
+    secureStorage.delete(key: 'ff_Calories');
+  }
+
+  void updateCaloriesStruct(Function(CalorieCounterStruct) updateFn) {
+    updateFn(_Calories);
+    secureStorage.setString('ff_Calories', _Calories.serialize());
   }
 }
 

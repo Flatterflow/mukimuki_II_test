@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'home_page_model.dart';
@@ -70,15 +69,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return Scaffold(
@@ -92,9 +82,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primary,
-                ),
+                decoration: const BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -178,7 +166,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Open Sans',
-                                        color: Colors.black,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(
@@ -205,7 +194,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     .titleSmall
                                     .override(
                                       fontFamily: 'Open Sans',
-                                      color: Colors.black,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(
@@ -231,7 +221,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     .titleSmall
                                     .override(
                                       fontFamily: 'Open Sans',
-                                      color: Colors.black,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(
@@ -258,7 +249,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Open Sans',
-                                        color: Colors.black,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(
@@ -379,21 +371,24 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             ),
                             Stack(
                               children: [
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed('Armworkouts');
-                                  },
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.network(
-                                      'https://images.unsplash.com/photo-1590771998996-8589ec9b5ac6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHw3fHxzcXVhdHxlbnwwfHx8fDE2OTgwNDYzNTR8MA&ixlib=rb-4.0.3&q=80&w=1080',
-                                      width: 300.0,
-                                      height: 200.0,
-                                      fit: BoxFit.cover,
+                                Align(
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed('Armworkouts');
+                                    },
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: Image.network(
+                                        'https://images.unsplash.com/photo-1590771998996-8589ec9b5ac6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHw3fHxzcXVhdHxlbnwwfHx8fDE2OTgwNDYzNTR8MA&ixlib=rb-4.0.3&q=80&w=1080',
+                                        width: 300.0,
+                                        height: 200.0,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -493,18 +488,28 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         ),
                                   ),
                                 ),
-                                wrapWithModel(
-                                  model: _model.addWorkoutBoxButtonModel,
-                                  updateCallback: () => setState(() {}),
-                                  child: AddWorkoutBoxButtonWidget(
-                                    addWorkoutBoxAction: () async {
-                                      setState(() {
-                                        FFAppState().addToWrkts(WorkoutStruct(
-                                          isNew: true,
-                                          lastUsedDate: getCurrentTimestamp,
-                                        ));
-                                      });
-                                    },
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed('CreateNewWorkout');
+                                  },
+                                  child: wrapWithModel(
+                                    model: _model.addWorkoutBoxButtonModel,
+                                    updateCallback: () => setState(() {}),
+                                    updateOnChange: true,
+                                    child: AddWorkoutBoxButtonWidget(
+                                      addWorkoutBoxAction: () async {
+                                        setState(() {
+                                          FFAppState().addToWrkts(WorkoutStruct(
+                                            isNew: true,
+                                            lastUsedDate: getCurrentTimestamp,
+                                          ));
+                                        });
+                                      },
+                                    ),
                                   ),
                                 ),
                               ],

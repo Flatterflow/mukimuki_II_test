@@ -169,32 +169,22 @@ class _WorkoutpopuotWidgetState extends State<WorkoutpopuotWidget> {
                       ],
                     ),
                   ),
-                  StreamBuilder<List<ExercisesRecord>>(
-                    stream: queryExercisesRecord(),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 35.0,
-                            height: 35.0,
-                            child: SpinKitSquareCircle(
-                              color: FlutterFlowTheme.of(context).lineColor,
-                              size: 35.0,
-                            ),
-                          ),
-                        );
-                      }
-                      List<ExercisesRecord> listViewExercisesRecordList =
-                          snapshot.data!;
+                  Builder(
+                    builder: (context) {
+                      final workoutPopoutExerciseList =
+                          bottomSheetMaterialHomepageGridTemplatesRecord
+                                  ?.exerciseRef
+                                  .toList() ??
+                              [];
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        itemCount: listViewExercisesRecordList.length,
-                        itemBuilder: (context, listViewIndex) {
-                          final listViewExercisesRecord =
-                              listViewExercisesRecordList[listViewIndex];
+                        itemCount: workoutPopoutExerciseList.length,
+                        itemBuilder: (context, workoutPopoutExerciseListIndex) {
+                          final workoutPopoutExerciseListItem =
+                              workoutPopoutExerciseList[
+                                  workoutPopoutExerciseListIndex];
                           return Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 20.0, 8.0, 0.0),
@@ -221,7 +211,18 @@ class _WorkoutpopuotWidgetState extends State<WorkoutpopuotWidget> {
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             20.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          'Squat x 5',
+                                          valueOrDefault<String>(
+                                            bottomSheetMaterialHomepageGridTemplatesRecord
+                                                ?.exerciseRef
+                                                .contains(
+                                                    bottomSheetMaterialHomepageGridTemplatesRecord
+                                                        .exerciseRef
+                                                        .take(5)
+                                                        .toList()
+                                                        .first)
+                                                .toString(),
+                                            '001',
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
                                         ),
@@ -232,8 +233,12 @@ class _WorkoutpopuotWidgetState extends State<WorkoutpopuotWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        listViewExercisesRecord.sets.length
-                                            .toString(),
+                                        valueOrDefault<String>(
+                                          bottomSheetMaterialHomepageGridTemplatesRecord
+                                              ?.hasExerciseRef()
+                                              .toString(),
+                                          '002',
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),

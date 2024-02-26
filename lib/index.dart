@@ -67,3 +67,7 @@ export '/chest_interr_gym_copy/chest_interr_gym_copy_widget.dart'
     show ChestInterrGymCopyWidget;
 export '/pages/workoutvideo/pushup_copy/pushup_copy_widget.dart'
     show PushupCopyWidget;
+export '/create_new_workout/create_new_workout_widget.dart'
+    show CreateNewWorkoutWidget;
+export '/main_pages/calorie_page/calorie_page_widget.dart'
+    show CaloriePageWidget;

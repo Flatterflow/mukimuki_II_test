@@ -52,7 +52,7 @@ class _EditButtonDropdownOptionsWidgetState
       child: Container(
         width: 300.0,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: FlutterFlowTheme.of(context).primary,
           boxShadow: const [
             BoxShadow(
               blurRadius: 4.0,
@@ -63,42 +63,87 @@ class _EditButtonDropdownOptionsWidgetState
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 12.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 0.0),
-                child: Text(
-                  'Options',
-                  textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Plus Jakarta Sans',
-                        color: const Color(0xFF57636C),
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w500,
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                child: Material(
+                  color: Colors.transparent,
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primary,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 0.0, 0.0),
+                            child: Icon(
+                              Icons.edit_sharp,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 20.0,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                'Edit',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
+                    ),
+                  ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+              Material(
+                color: Colors.transparent,
+                elevation: 2.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
                 child: Container(
                   width: double.infinity,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).primary,
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        const Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 0.0),
                           child: Icon(
-                            Icons.edit_sharp,
-                            color: Color(0xFF14181B),
+                            Icons.group_add_rounded,
+                            color: FlutterFlowTheme.of(context).primaryText,
                             size: 20.0,
                           ),
                         ),
@@ -107,12 +152,13 @@ class _EditButtonDropdownOptionsWidgetState
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              'Edit',
+                              'Assign',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Plus Jakarta Sans',
-                                    color: const Color(0xFF14181B),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -124,131 +170,104 @@ class _EditButtonDropdownOptionsWidgetState
                   ),
                 ),
               ),
-              Container(
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
+              Material(
+                color: Colors.transparent,
+                elevation: 2.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      const Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
-                        child: Icon(
-                          Icons.group_add_rounded,
-                          color: Color(0xFF14181B),
-                          size: 20.0,
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).primary,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Assign',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  color: const Color(0xFF14181B),
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                          child: Icon(
+                            Icons.ios_share,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 20.0,
                           ),
                         ),
-                      ),
-                    ],
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              'Share',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              Container(
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
+              Material(
+                color: Colors.transparent,
+                elevation: 2.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      const Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
-                        child: Icon(
-                          Icons.ios_share,
-                          color: Color(0xFF14181B),
-                          size: 20.0,
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).primary,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Share',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  color: const Color(0xFF14181B),
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                          child: Icon(
+                            Icons.delete_outline_rounded,
+                            color: Color(0xFFFF5963),
+                            size: 20.0,
                           ),
                         ),
-                      ),
-                    ],
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              'Delete',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: const Color(0xFFFF5963),
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              const Divider(
-                thickness: 1.0,
-                color: Color(0xFFE0E3E7),
-              ),
-              Container(
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      const Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
-                        child: Icon(
-                          Icons.delete_outline_rounded,
-                          color: Color(0xFFFF5963),
-                          size: 20.0,
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Delete',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  color: const Color(0xFFFF5963),
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+            ].divide(const SizedBox(height: 8.0)).addToStart(const SizedBox(height: 8.0)),
           ),
         ),
       ),

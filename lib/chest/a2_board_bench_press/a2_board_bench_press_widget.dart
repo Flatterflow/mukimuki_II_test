@@ -104,7 +104,7 @@ class _A2BoardBenchPressWidgetState extends State<A2BoardBenchPressWidget> {
                     color: FlutterFlowTheme.of(context).primaryText,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Open Sans',
-                          color: Colors.white,
+                          color: FlutterFlowTheme.of(context).primary,
                         ),
                     elevation: 3.0,
                     borderSide: const BorderSide(
@@ -132,7 +132,7 @@ class _A2BoardBenchPressWidgetState extends State<A2BoardBenchPressWidget> {
                     color: FlutterFlowTheme.of(context).primaryText,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Open Sans',
-                          color: Colors.white,
+                          color: FlutterFlowTheme.of(context).primary,
                         ),
                     elevation: 3.0,
                     borderSide: const BorderSide(

@@ -206,10 +206,11 @@ class _WorkoutBoxWidgetState extends State<WorkoutBoxWidget> {
                   );
                 },
               ),
-              Container(
-                decoration: const BoxDecoration(),
-                child: StreamBuilder<List<ExercisesRecord>>(
-                  stream: queryExercisesRecord(),
+              Expanded(
+                child: StreamBuilder<List<HomepageGridTemplatesRecord>>(
+                  stream: queryHomepageGridTemplatesRecord(
+                    singleRecord: true,
+                  ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -224,45 +225,85 @@ class _WorkoutBoxWidgetState extends State<WorkoutBoxWidget> {
                         ),
                       );
                     }
-                    List<ExercisesRecord> listViewExercisesRecordList =
+                    List<HomepageGridTemplatesRecord>
+                        exerciseListContainerHomepageGridTemplatesRecordList =
                         snapshot.data!;
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      primary: false,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: listViewExercisesRecordList.length,
-                      itemBuilder: (context, listViewIndex) {
-                        final listViewExercisesRecord =
-                            listViewExercisesRecordList[listViewIndex];
-                        return Text(
-                          listViewExercisesRecord.name,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Open Sans',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                              ),
-                        );
-                      },
+                    // Return an empty Container when the item does not exist.
+                    if (snapshot.data!.isEmpty) {
+                      return Container();
+                    }
+                    final exerciseListContainerHomepageGridTemplatesRecord =
+                        exerciseListContainerHomepageGridTemplatesRecordList
+                                .isNotEmpty
+                            ? exerciseListContainerHomepageGridTemplatesRecordList
+                                .first
+                            : null;
+                    return Container(
+                      decoration: const BoxDecoration(),
+                      child: Builder(
+                        builder: (context) {
+                          final exerciseList =
+                              exerciseListContainerHomepageGridTemplatesRecord
+                                      ?.exerciseRef
+                                      .toList() ??
+                                  [];
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            primary: false,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: exerciseList.length,
+                            itemBuilder: (context, exerciseListIndex) {
+                              final exerciseListItem =
+                                  exerciseList[exerciseListIndex];
+                              return Text(
+                                valueOrDefault<String>(
+                                  exerciseListContainerHomepageGridTemplatesRecord
+                                      ?.hasExerciseRef()
+                                      .toString(),
+                                  '001',
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Open Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
+                              );
+                            },
+                          );
+                        },
+                      ),
                     );
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Container(
-                  height: 20.0,
-                  decoration: const BoxDecoration(),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
+              Container(
+                height: 20.0,
+                decoration: const BoxDecoration(),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    if (responsiveVisibility(
+                      context: context,
+                      phone: false,
+                      tablet: false,
+                      tabletLandscape: false,
+                      desktop: false,
+                    ))
                       Text(
-                        'Hello World',
+                        dateTimeFormat(
+                          'yMMMd',
+                          dateTimeFromSecondsSinceEpoch(valueOrDefault<int>(
+                            widget.lastWorkout?.lastUsedDate?.secondsSinceEpoch,
+                            00,
+                          )),
+                          locale: FFLocalizations.of(context).languageCode,
+                        ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
-                    ],
-                  ),
+                  ],
                 ),
               ),
             ],

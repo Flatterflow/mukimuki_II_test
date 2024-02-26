@@ -34,11 +34,6 @@ class ExercisesRecord extends FirestoreRecord {
   List<SetStruct> get sets => _sets ?? const [];
   bool hasSets() => _sets != null;
 
-  // "exerciseName" field.
-  String? _exerciseName;
-  String get exerciseName => _exerciseName ?? '';
-  bool hasExerciseName() => _exerciseName != null;
-
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _muscleGroup = snapshotData['muscle_group'] as String?;
@@ -47,7 +42,6 @@ class ExercisesRecord extends FirestoreRecord {
       snapshotData['sets'],
       SetStruct.fromMap,
     );
-    _exerciseName = snapshotData['exerciseName'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -88,14 +82,12 @@ Map<String, dynamic> createExercisesRecordData({
   String? name,
   String? muscleGroup,
   String? equipment,
-  String? exerciseName,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'name': name,
       'muscle_group': muscleGroup,
       'equipment': equipment,
-      'exerciseName': exerciseName,
     }.withoutNulls,
   );
 
@@ -111,13 +103,12 @@ class ExercisesRecordDocumentEquality implements Equality<ExercisesRecord> {
     return e1?.name == e2?.name &&
         e1?.muscleGroup == e2?.muscleGroup &&
         e1?.equipment == e2?.equipment &&
-        listEquality.equals(e1?.sets, e2?.sets) &&
-        e1?.exerciseName == e2?.exerciseName;
+        listEquality.equals(e1?.sets, e2?.sets);
   }
 
   @override
   int hash(ExercisesRecord? e) => const ListEquality()
-      .hash([e?.name, e?.muscleGroup, e?.equipment, e?.sets, e?.exerciseName]);
+      .hash([e?.name, e?.muscleGroup, e?.equipment, e?.sets]);
 
   @override
   bool isValidKey(Object? o) => o is ExercisesRecord;

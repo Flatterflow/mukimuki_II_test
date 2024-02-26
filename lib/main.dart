@@ -10,6 +10,9 @@ import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
+import 'package:flutter/foundation.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'index.dart';
 
 void main() async {
@@ -21,6 +24,10 @@ void main() async {
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
+
+  if (!kIsWeb) {
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  }
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
@@ -134,6 +141,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'HomePage': const HomePageWidget(),
       'ACTIVITY': const ActivityWidget(),
+      'CaloriePage': const CaloriePageWidget(),
       'profilev2': const Profilev2Widget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -147,7 +155,7 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPageName = tabs.keys.toList()[i];
         }),
         backgroundColor: FlutterFlowTheme.of(context).primary,
-        selectedItemColor: Colors.black,
+        selectedItemColor: FlutterFlowTheme.of(context).secondaryText,
         unselectedItemColor: FlutterFlowTheme.of(context).noaktive,
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -167,6 +175,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Profile',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.nutritionix,
+              size: 24.0,
+            ),
+            label: 'Home',
             tooltip: '',
           ),
           BottomNavigationBarItem(

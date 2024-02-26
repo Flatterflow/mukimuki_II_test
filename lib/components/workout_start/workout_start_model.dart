@@ -1,25 +1,15 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/flutter_flow/flutter_flow_timer.dart';
+import '/components/play_pause_stop_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'workout_start_widget.dart' show WorkoutStartWidget;
 import 'package:flutter/material.dart';
 
 class WorkoutStartModel extends FlutterFlowModel<WorkoutStartWidget> {
   ///  State fields for stateful widgets in this component.
 
-  DateTime? datePicked;
-  // State field(s) for Timer widget.
-  int timerMilliseconds = 0;
-  String timerValue = StopWatchTimer.getDisplayTime(
-    0,
-    hours: false,
-    milliSecond: false,
-  );
-  FlutterFlowTimerController timerController =
-      FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countUp));
-
+  // Model for PlayPauseStop component.
+  late PlayPauseStopModel playPauseStopModel;
   // State field(s) for Checkbox widget.
 
   Map<SetStruct, bool> checkboxValueMap = {};
@@ -29,11 +19,13 @@ class WorkoutStartModel extends FlutterFlowModel<WorkoutStartWidget> {
   /// Initialization and disposal methods.
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    playPauseStopModel = createModel(context, () => PlayPauseStopModel());
+  }
 
   @override
   void dispose() {
-    timerController.dispose();
+    playPauseStopModel.dispose();
   }
 
   /// Action blocks are added here.

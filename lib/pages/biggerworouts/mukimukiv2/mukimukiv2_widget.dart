@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'mukimukiv2_model.dart';
 export 'mukimukiv2_model.dart';
@@ -36,15 +35,6 @@ class _Mukimukiv2WidgetState extends State<Mukimukiv2Widget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -108,24 +98,13 @@ class _Mukimukiv2WidgetState extends State<Mukimukiv2Widget> {
                       'MUKI MUKI \n(HOUSE WORKOUTS)',
                       style: FlutterFlowTheme.of(context).displaySmall,
                     ),
-                    Text(
-                      'Legs muscles workouts',
-                      style: FlutterFlowTheme.of(context).labelLarge,
-                    ),
-                    Text(
-                      'Front',
-                      style: FlutterFlowTheme.of(context).bodySmall.override(
-                            fontFamily: 'Open Sans',
-                            fontSize: 20.0,
-                          ),
-                    ),
                     InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('MUKIMUKIWokouts');
+                        context.pushNamed('ChestInterrGymCopy');
                       },
                       child: Container(
                         width: double.infinity,

@@ -82,7 +82,7 @@ class _PushuppWidgetState extends State<PushuppWidget> {
                 scrollDirection: Axis.vertical,
                 children: [
                   Text(
-                    'Target Muscle Group-Chest\nExercise Type-Strength\nEquipment Required-Bodyweight\nMechanics-Compound\nForce Type-Push (Bilateral)\nSecondary Muscles-Abs, Shoulders, Triceps',
+                    'Target Muscle Group-Chest\nExercise Type-Strength/Bodybuilding\nEquipment Required-Bodyweight\nMechanics-Compound\nForce Type-Push (Bilateral)\nSecondary Muscles-Abs, Shoulders, Triceps',
                     style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
                 ],
@@ -104,7 +104,7 @@ class _PushuppWidgetState extends State<PushuppWidget> {
                     color: FlutterFlowTheme.of(context).primaryText,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Open Sans',
-                          color: Colors.white,
+                          color: FlutterFlowTheme.of(context).primary,
                         ),
                     elevation: 3.0,
                     borderSide: const BorderSide(
